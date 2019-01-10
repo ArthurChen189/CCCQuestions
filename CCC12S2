@@ -15,24 +15,30 @@ public class CCC12S2 {
 
         Scanner sc = new Scanner(System.in);
         input = sc.nextLine();
-        total = Character.getNumericValue(input.charAt(0))* RomaList.get(input.charAt(1));
+        total = 0;
 
         if(input.length() > 2){
-            for (int i = 1; i < input.length() - 2; i+=2) { // FIXME: 2019/1/9
-//                int A1 = input.charAt(i);
-                char R1 = input.charAt(i);
-                char A2 = input.charAt(i+1);
-                char R2 = input.charAt(i+2);
+            for (int i = 0; i < input.length() - 3; i += 2) {
+                    char A1 = input.charAt(i);
+                    char R1 = input.charAt(i+1);
+                    char A2 = input.charAt(i+2);
+                    char R2 = input.charAt(i+3);
 
 
-                if(RomaList.get(R2) > RomaList.get(R1)){
-                    total = total - (Character.getNumericValue(A2) * RomaList.get(R2));
-                }else{
-                    total = total + (Character.getNumericValue(A2) * RomaList.get(R2));
-                }
+                    if(RomaList.get(R2) > RomaList.get(R1)){
+                        total = total - (Character.getNumericValue(A1) * RomaList.get(R1));
+                    }else{
+                        total = total + (Character.getNumericValue(A1) * RomaList.get(R1));
+                    }
+
+                    if (i + 3 == input.length() - 1 ){
+                        total = total + Character.getNumericValue(A2) * RomaList.get(R2);
+                        System.out.println(total);
+                    }
+
             }
-            System.out.println(total);
         }else if(input.length() == 2){
+            total = Character.getNumericValue(input.charAt(0))* RomaList.get(input.charAt(1));
             System.out.println(total);
         }
 
