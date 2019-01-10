@@ -1,0 +1,48 @@
+import java.util.*;
+public class CCCHK08J3 {
+
+    static Map<String,String> contact = new HashMap<>();
+    static Map<String,Integer> contactHistory = new HashMap<>();
+    static int N,D;
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        N = sc.nextInt();
+
+        //reading the first set of data
+        for (int i = 0; i < N; i++) {
+            String tempName = sc.next();
+            String tempPhone = sc.next();
+            contact.put(tempPhone,tempName);
+        }
+
+        D = sc.nextInt();
+
+        //reading the second set of data
+        for (int i = 0; i < D; i++) {
+            String temp = sc.next();
+            if(!contactHistory.containsKey(temp)){
+                contactHistory.put(temp,1);
+            }else{
+                contactHistory.put(temp,contactHistory.get(temp) + 1);
+            }
+        }
+
+
+        //comparing data and find out the one that occurs the most often
+
+        Set<String> set = contactHistory.keySet();
+        int max = -999999;
+        String maxphone="99999999";
+        for( String key : set){
+            int va = contactHistory.get(key);
+            if(max==va && Integer.parseInt(key) < Integer.parseInt(maxphone) ) { maxphone = key;}
+            if( max < va) { max=va; maxphone = key;}
+
+        }
+
+        System.out.println(contact.get(maxphone));
+
+
+    }
+}
