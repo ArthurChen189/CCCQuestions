@@ -1,0 +1,40 @@
+import java.util.*;
+public class CCC12S2 {
+    static Map<Character,Integer> RomaList = new HashMap<>();
+    static String input;
+    static int total;
+    public static void main(String[] args) {
+        //putting data
+        RomaList.put('I',1);
+        RomaList.put('V',5);
+        RomaList.put('X',10);
+        RomaList.put('L',50);
+        RomaList.put('C',100);
+        RomaList.put('D',500);
+        RomaList.put('M',1000);
+
+        Scanner sc = new Scanner(System.in);
+        input = sc.nextLine();
+        total = Character.getNumericValue(input.charAt(0))* RomaList.get(input.charAt(1));
+
+        if(input.length() > 2){
+            for (int i = 1; i < input.length() - 2; i+=2) { // FIXME: 2019/1/9
+//                int A1 = input.charAt(i);
+                char R1 = input.charAt(i);
+                char A2 = input.charAt(i+1);
+                char R2 = input.charAt(i+2);
+
+
+                if(RomaList.get(R2) > RomaList.get(R1)){
+                    total = total - (Character.getNumericValue(A2) * RomaList.get(R2));
+                }else{
+                    total = total + (Character.getNumericValue(A2) * RomaList.get(R2));
+                }
+            }
+            System.out.println(total);
+        }else if(input.length() == 2){
+            System.out.println(total);
+        }
+
+    }
+}
