@@ -8,45 +8,41 @@ public class CCC14S2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         N = sc.nextInt();
-        nameList = new String[N][2];
+        if (N % 2 != 0){
+            System.out.println("bad");
+        }else {
+            nameList = new String[N][2];
 
 
-        //reading data
-        for (int i = 0; i < N; i++) {
-            nameList[i][0] = sc.next();
-        }
-
-        for (int i = 0; i < N; i++) {
-            nameList[i][1] = sc.next();
-        }
-
-
-        //initializing a map
-        for (int i = 0; i < N; i++) {
-            map.put(nameList[i][0],nameList[i][1]);
-        }
-
-        //defining result
-
-
-        //checking
-        for (String temp :set) {
-            if ((!(temp.equals(map.get(map.get(temp))))) || (temp.equals(map.get(temp)))){ // FIXME: 2019/1/10
-                result = "bad";
-//                System.out.println("(!(map.get(temp).equals(map.get(map.get(temp))))) = " + !((map.get(temp).equals(map.get(map.get(temp))))) );
-//                System.out.println("(temp.equals(map.get(temp))) = " + (temp.equals(map.get(temp))));
-//                System.out.println("temp = " + temp);
-//                System.out.println("value = " + map.get(temp));
-//                System.out.println("value's value = " + map.get(map.get(temp)));
-                break;
+            //reading data
+            for (int i = 0; i < N; i++) {
+                nameList[i][0] = sc.next();
             }
+
+            for (int i = 0; i < N; i++) {
+                nameList[i][1] = sc.next();
             }
 
 
+            //initializing a map
+            for (int i = 0; i < N; i++) {
+                map.put(nameList[i][0], nameList[i][1]);
+            }
 
-        System.out.println(result);
+            //defining result
+
+
+            //checking
+            for (String temp : set) {
+                if ((!(temp.equals(map.get(map.get(temp))))) || (temp.equals(map.get(temp)))) { // FIXME: 2019/1/10
+                    result = "bad";
+                    break;
+                }
+            }
+
+
+            System.out.println(result);
         }
-
-
     }
 
+}
