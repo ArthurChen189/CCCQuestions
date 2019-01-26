@@ -4,7 +4,7 @@ public class CCC14S2 {
     static String[][] nameList;
     static Set<String> set = map.keySet();
     static int N;
-    static String result = "Good";
+    static String result = "good";
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         N = sc.nextInt();
